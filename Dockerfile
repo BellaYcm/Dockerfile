@@ -49,7 +49,7 @@ RUN make install
 WORKDIR /data
 RUN  tar -zxvf php-5.6.24.tar.gz
 WORKDIR /data/php-5.6.24
-RUN ./configure --prefix=/usr/local/webserver/php-5.6.24 --with-config-file-path=/etc/php --enable-fpm --enable-pcntl --enable-mysqlnd --enable-opcache=no --ena                                                                             ble-sockets --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-shmop --enable-zip=no --enable-soap --enable-xml --enable-mbstring --disable-rpath --dis                                                                             able-debug --disable-fileinfo --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-pcre-regex --with-iconv --with-zlib --with-mcrypt --wit                                                                             h-gd --with-openssl --with-mhash --with-xmlrpc --with-curl --with-imap-ssl --with-freetype-dir=/usr/include/freetype2/freetype
+RUN ./configure --prefix=/usr/local/webserver/php-5.6.24 --with-config-file-path=/etc/php --enable-fpm --enable-pcntl --enable-mysqlnd --enable-opcache=no --enable-sockets --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-shmop --enable-zip=no --enable-soap --enable-xml --enable-mbstring --disable-rpath --disable-debug --disable-fileinfo --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-pcre-regex --with-iconv --with-zlib --with-mcrypt --with-gd --with-openssl --with-mhash --with-xmlrpc --with-curl --with-imap-ssl --with-freetype-dir=/usr/include/freetype2/freetype
 RUN make
 RUN make install
 RUN cp /usr/local/webserver/php-5.6.24/etc/php-fpm.conf.default /usr/local/webserver/php-5.6.24/etc/php-fpm.conf
@@ -92,7 +92,7 @@ RUN useradd -r -g mysql -s /bin/false mysql
  
  
 WORKDIR /data/mysql-5.7.16
-RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql  -DMYSQL_DATADIR=/mysql/data  -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COL                                                                             LATION=utf8_general_ci  -DEXTRA_CHARSETS=all  -DENABLED_LOCAL_INFILE=1 -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/webserver/boost
+RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql  -DMYSQL_DATADIR=/mysql/data  -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci  -DEXTRA_CHARSETS=all  -DENABLED_LOCAL_INFILE=1 -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/webserver/boost
 RUN make
 RUN make install
 RUN mkdir -p /mysql/data
