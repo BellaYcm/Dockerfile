@@ -90,13 +90,13 @@ RUN tar zxvf mysql-5.7.16.tar.gz
 RUN groupadd mysql
 RUN useradd -r -g mysql -s /bin/false mysql
  
- 
-WORKDIR /data/mysql-5.7.16
-RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql  -DMYSQL_DATADIR=/mysql/data  -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci  -DEXTRA_CHARSETS=all  -DENABLED_LOCAL_INFILE=1 -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/webserver/boost
-RUN make
-RUN make install
-RUN mkdir -p /mysql/data
-WORKDIR /usr/local/webserver/mysql/bin
+#dockerhub_timeout 
+#WORKDIR /data/mysql-5.7.16
+#RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql  -DMYSQL_DATADIR=/mysql/data  -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci  -DEXTRA_CHARSETS=all  -DENABLED_LOCAL_INFILE=1 -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/webserver/boost
+#RUN make
+#RUN make install
+#RUN mkdir -p /mysql/data
+#WORKDIR /usr/local/webserver/mysql/bin
  
  
 #RUN ./mysqld --initialize   --user=mysql --datadir=/mysql/data --basedir=/usr/local/webserver/mysql --socket=/tmp/mysql.sock >/data/mysql_pass.md 2>&1 &
